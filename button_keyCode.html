@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Show letter</title>
+  <style>
+    *{
+      font-size: 10px;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      flex: 2;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    .letter {
+      border: .4rem solid black;
+      padding: 1rem .5rem;    
+      font-size: 1.5rem;
+      width: 15rem;
+      color: white;
+      text-align: center;
+      background:  rgba(0, 0, 0, 0.4);
+      text-shadow: 0 0 .5rem black;
+      transition: all .07s ease;
+    }
+    kbd {
+      font-size: 4rem;
+      text-transform: uppercase;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="letter">
+      <kbd>Press button</kbd>
+    </div>
+  </div>
+
+<script>
+  function showKey(e) {
+    const letter = document.querySelector(`kbd`);
+    const box = document.querySelector(`div[class = letter]`);
+    letter.innerHTML = e.keyCode + '-' + String.fromCharCode(e.keyCode);
+  }
+
+	window.addEventListener('keydown', showKey);
+</script>
+
+</body>
+</html>

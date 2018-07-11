@@ -1,0 +1,64 @@
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>JS Drum Kit</title>
+</head>
+<body>
+	
+	<script>
+	let score = 1;
+	let questionList = [];
+	let Question =	function(question, answers, correct_answer) {
+		this.question = question;
+		this.answers = answers;
+		this.correct_answer = correct_answer;
+
+			this.ask = function() {
+				console.log(question);
+				for (let a of answers ) {
+					console.log(a);
+				}
+				let c = prompt('Your answer', 0);
+				if (c == correct_answer) {
+					score += 1;
+					console.log(`Right, Your score:${score}`);
+					} else {
+					score -= 1;
+					console.log('Sorry, but no.');
+				}
+			}
+		}
+
+		for (let i = 0; i < 100; i++) {
+			let a = Math.round(Math.random() * 10);
+			let b = Math.round(Math.random() * 10);
+			let answers = [a + b, a * b, a - b,];
+			questionList.push(new Question(`${a}+${b} = ?`, answers, a + b));
+		}
+		while (score > 0) {
+			let i = Math.round(Math.random() * 99);
+			questionList[i].ask();
+		}
+
+		
+
+		/*
+		let score = 0;
+		while (true) {
+			let a = Math.floor(Math.random() * 10);
+			let b = Math.floor(Math.random() * 10);
+			console.log(`${a}+${b} = ?`);
+			let c = prompt('Your answer ?', 0);
+			if (a + b == c) {
+				score += 1;
+				console.log(`Right, Your score:${score}`);
+			} else {
+				console.log('Sorry, but no.');
+				break;
+			}
+		}
+		*/
+	</script>
+
+</body>
+</html>
